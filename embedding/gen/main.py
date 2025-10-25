@@ -2,9 +2,7 @@ import json
 from transformers import AutoTokenizer, AutoModel
 import torch
 
-with open(
-    "/home/mohit-fedora/Documents/rag_chatbot/embedding/splitting_chunks/split_data.json"
-) as f:
+with open("../splitting_chunks/split_data.json") as f:
     split_chunks = json.load(f)
 
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-1.5B")
