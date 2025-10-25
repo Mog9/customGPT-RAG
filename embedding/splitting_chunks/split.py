@@ -2,7 +2,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 import os
 import json
 
-#split my data and store in json to embed later
+# split my data and store in json to embed later
 folder = "./data"
 texts_data = {}
 
@@ -20,9 +20,11 @@ text_splitter = RecursiveCharacterTextSplitter(
 splits = {}
 
 for name, content in texts_data.items():
-    splits[name] = [doc.page_content for doc in text_splitter.create_documents([content])]
+    splits[name] = [
+        doc.page_content for doc in text_splitter.create_documents([content])
+    ]
 
-#json
+# json
 output_path = os.path.join(os.path.dirname(__file__), "split_data.json")
-with open (output_path, "w") as f:
+with open(output_path, "w") as f:
     json.dump(splits, f, indent=2)

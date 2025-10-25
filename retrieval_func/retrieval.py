@@ -2,12 +2,14 @@ import json
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
+from pathlib import Path
 
-embed_file = "../gen/embeddings.json"
+current_dir = Path(__file__).parent
+embed_file = current_dir / ".." / "embedding" / "gen" / "embeddings.json"
 model_name = "Qwen/Qwen2-1.5B"
-top_k = 3
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModel.from_pretrained(
     model_name, dtype=torch.float16 if torch.cuda.is_available() else torch.float32
@@ -22,7 +24,7 @@ embeddings = [torch.tensor(d["embedding"], dtype=torch.float32) for d in data]
 embeddings = torch.stack(embeddings).to(device)
 
 
-def retrieve(query: str, top_k: int):
+def retrieve(query: str, top_k: int = 4):
     input = tokenizer(query, return_tensors="pt", truncation=True, padding=True).to(
         device
     )
@@ -45,7 +47,7 @@ def retrieve(query: str, top_k: int):
 # test
 if __name__ == "__main__":
     query = input("enter your query: ")
-    top_chunks = retrieve(query, top_k)
+    top_chunks = retrieve(query, top_k=4)
     print("top relevent chunks:\n")
 
     for i, item in enumerate(top_chunks):
