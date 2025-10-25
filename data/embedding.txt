@@ -1,0 +1,5 @@
+Embeddings are vector representations of text that capture meaning in numbers. Every token (like “cat” or “run”) is converted into a high-dimensional vector that represents its semantic context. Words that are similar in meaning have embeddings that are close to each other in vector space — for instance, “king” and “queen” or “walk” and “run.” These embeddings become the foundation of how AI models understand and compare words.
+
+Early models like Word2Vec or GloVe built embeddings by looking at how words appear in context within large text corpora. Modern transformer-based models like BERT or GPT learn contextual embeddings, meaning the vector for a word changes depending on its surrounding words — “bank” in “river bank” and “money bank” will have different vectors.
+
+Embeddings are also key in Retrieval-Augmented Generation (RAG), where your documents are converted into embeddings and stored in a vector database. When a user asks a question, the system retrieves the most relevant pieces of text based on embedding similarity, enabling the model to answer accurately using external knowledge.

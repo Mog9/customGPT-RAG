@@ -1,0 +1,5 @@
+Tokenization is the process of breaking text into smaller pieces, called tokens, that can be understood by language models. Tokens can be words, characters, or subwords depending on the tokenizer used. For example, “unbelievable” might be split into “un”, “believ”, and “able” — this helps the model learn word patterns and meanings even for unseen words. Tokenization makes raw text mathematically representable and consistent across all inputs.
+
+In practice, tokenizers use rules or pretrained vocabularies. GPT and BERT models, for instance, use Byte Pair Encoding (BPE) or WordPiece, which merge frequently occurring sequences of characters. This way, the tokenizer balances vocabulary size and token length efficiently. These methods also handle unknown words gracefully by breaking them into known sub-pieces.
+
+Good tokenization is crucial because it directly affects how well a model can understand context. If the tokenizer splits words poorly, the model may lose semantic meaning. Conversely, efficient tokenization reduces computational load and allows models to generalize across languages, typos, and new terms.

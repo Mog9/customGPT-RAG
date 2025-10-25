@@ -1,0 +1,5 @@
+The attention mechanism allows a model to focus on the most relevant parts of the input when making predictions. Instead of treating each word equally, attention assigns different weights to tokens based on their importance in context. For example, in the sentence “The cat sat on the mat because it was tired,” the model uses attention to understand that “it” refers to “cat,” not “mat.”
+
+In transformers, this is implemented as self-attention, where each token looks at every other token in the sequence to decide what to focus on. This gives the model a global view of context — unlike RNNs, which could only remember recent words. Multi-head attention expands this further by letting the model learn multiple types of relationships simultaneously (e.g., syntactic and semantic).
+
+Attention is often visualized as a heatmap showing how much one word “attends” to another. It is the key innovation that made transformers so effective, allowing them to handle context, ambiguity, and long sentences with incredible accuracy. In short, attention is what gives models “understanding” in language.
