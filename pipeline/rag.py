@@ -26,7 +26,7 @@ model.eval()
 conversation = ConversationContext(max_history=3)
 
 
-def rag_response(query, top_k=4, relevance_threshold=0.5):
+def rag_response(query, top_k=5, relevance_threshold=0.5):
     is_math, math_answer = handle_math_query(query)
     if is_math:
         print("------------------------")
@@ -46,7 +46,7 @@ def rag_response(query, top_k=4, relevance_threshold=0.5):
         messages = [
             {
                 "role": "system",
-                "content": "You are a helpful AI assistant. Use the provided context and conversation history to answer questions accurately.",
+                "content": "You are an AI assistant with access to private project documentation. Your task is to answer questions only based on the provided context. If the answer is contained in the context, use that information to respond clearly and accurately. If the question asks about topics not included in the context, do not invent explanations or provide unrelated technical details; instead, respond with “The information is not available in the document.” Always think carefully before answering, ensure your response is factually grounded in the context, and avoid making assumptions or adding external knowledge that is not present in the supplied text. Accuracy and relevance are more important than verbosity.",
             },
         ]
 
@@ -61,7 +61,7 @@ def rag_response(query, top_k=4, relevance_threshold=0.5):
         messages = [
             {
                 "role": "system",
-                "content": "You are a helpful AI assistant. Answer questions naturally and conversationally using your knowledge and conversation history.",
+                "content": "You are an AI assistant with access to private project documentation. Your task is to answer questions only based on the provided context. If the answer is contained in the context, use that information to respond clearly and accurately. If the question asks about topics not included in the context, do not invent explanations or provide unrelated technical details; instead, respond with “The information is not available in the document.” Always think carefully before answering, ensure your response is factually grounded in the context, and avoid making assumptions or adding external knowledge that is not present in the supplied text. Accuracy and relevance are more important than verbosity.",
             },
         ]
 
@@ -110,4 +110,4 @@ if __name__ == "__main__":
         elif not query:
             continue
 
-        rag_response(query, top_k=4)
+        rag_response(query, top_k=5)

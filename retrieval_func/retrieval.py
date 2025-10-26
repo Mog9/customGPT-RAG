@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from pathlib import Path
 
 current_dir = Path(__file__).parent
-embed_file = current_dir / ".." / "embedding" / "gen" / "embeddings.json"
+embed_file = current_dir / ".." / "embeddings.json"
 model_name = "Qwen/Qwen2-1.5B"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
