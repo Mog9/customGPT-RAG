@@ -32,7 +32,6 @@ for file_name, chunks in split_chunks.items():
                 "embedding": embedding,
             }
         )
-
 # json
 with open("embeddings.json", "w") as f:
     json.dump(all_embed, f, indent=2)
